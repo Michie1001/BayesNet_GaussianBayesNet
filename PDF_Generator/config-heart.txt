@@ -1,0 +1,48 @@
+name:Heart
+
+random_variables:Target(target);Thalach(thalach);Thal(thal);FBS(fbs);Cholesterol(chol);Rest_ECG(restecg);Slope(slope);Old_Peak(oldpeak);Sex(sex);CP(cp);Age(age);CA(ca);Exang(exang);Trest_BPS(trestbps)
+
+structure:P(target);P(thalach|target);P(thal|thalach,target);P(fbs|thal);P(chol|target);P(restecg|chol,target);P(slope|thalach,target,chol,restecg);P(oldpeak|thalach,slope);P(sex|slope,chol,restecg);P(cp|target,slope,restecg,thal);P(age|target,fbs,slope,restecg,thal);P(ca|thalach,target,age,oldpeak,fbs);P(exang|sex,restecg,age,fbs,target,thal,thalach);P(trestbps|thalach,target,restecg,age,chol,cp,oldpeak,thal)
+
+PDF(target):
+0.5079950799507995 ; 0.49993607461012485
+
+PDF(thalach|target):
+19.08625228144783*target + 139.09271563070362 ; 22.744303351656402
+
+PDF(thal|thalach,target):
+0.001874808335088414*thalach + -0.4474556447210641*target + 2.2656986359358298 ; 0.6294587194772734
+
+PDF(fbs|thal):
+-0.012481871024472688*thal + 0.1802162915253463 ; 0.3583327936918145
+
+PDF(chol|target):
+-9.06612735147247*target + 250.26483468162132 ; 49.90372801059806
+
+PDF(restecg|chol,target):
+-0.0012461927242570403*chol + 0.11186691139660303*target + 0.7646861287509757 ; 0.5214439816982555
+
+PDF(slope|thalach,target,chol,restecg):
+0.00819001510613953*thalach + 0.27772172352246044*target + 0.00040124988795352246*chol + 0.04542961354600554*restecg + -0.10157107758509998 ; 0.6190469955870338
+
+PDF(oldpeak|thalach,slope):
+-0.008564538677268703*thalach + -0.981892879184332*slope + 3.7026977017719913 ; 1.1887908208053217
+
+PDF(sex|slope,chol,restecg):
+-0.0217013612736804*slope + -0.001911962173685541*chol + -0.06257512701906941*restecg + 1.2219273097917704 ; 0.46247808218135195
+
+PDF(cp|target,slope,restecg,thal):
+0.9014335553571861*target + 0.004958294791131324*slope + -0.012352333531069423*restecg + -0.015773276018329514*thal + 0.4969707437267942 ; 1.0228881682273308
+
+PDF(age|target,fbs,slope,restecg,thal):
+-3.129213857875988*target + 2.4290434306766127*fbs + -0.9292867696712872*slope + -1.6196446324479508*restecg + -0.057024824574602395*thal + 57.9179810669065 ; 8.901187954302328
+
+PDF(ca|thalach,target,age,oldpeak,fbs):
+0.00042081927176911455*thalach + -0.6659402529384701*target + 0.022988217162910503*age + 0.02984656509894702*oldpeak + 0.1843757509013755*fbs + -0.2425176402563426 ; 1.0563951169431185
+
+PDF(exang|sex,restecg,age,fbs,target,thal,thalach):
+0.02420288524848182*sex + -0.00393691193659633*restecg + -0.004853312230119376*age + 0.06383416216484707*fbs + -0.306709215149506*target + 0.04346024709421157*thal + -0.006020025146943596*thalach + 1.5388144571073519 ; 0.4763658357454876
+
+PDF(trestbps|thalach,target,restecg,age,chol,cp,oldpeak,thal):
+0.11858970426262093*thalach + -3.535261428410255*target + -1.659288503796234*restecg + 0.49370590877768467*age + 0.02009316254905064*chol + 1.3938363219190968*cp + 2.6944354827591415*oldpeak + -0.687313238326081*thal + 82.19891846699889 ; 17.477759008535735
+

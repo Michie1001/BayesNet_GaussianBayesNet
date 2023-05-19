@@ -1,0 +1,33 @@
+name:Diabetes
+
+random_variables:DiabetesPedigreeFunction(DiabetesPedigreeFunction);Insulin(Insulin);Outcome(Outcome);Pregnancies(Pregnancies);BMI(BMI);Age(Age);Glucose(Glucose);BloodPressure(BloodPressure);SkinThickness(SkinThickness)
+
+structure:P(DiabetesPedigreeFunction);P(Insulin|DiabetesPedigreeFunction);P(Outcome|DiabetesPedigreeFunction);P(Pregnancies|Outcome);P(BMI|Outcome);P(Age|Outcome,Pregnancies);P(Glucose|Outcome,Age,Insulin);P(BloodPressure|Age,BMI);P(SkinThickness|BMI,Insulin)
+
+PDF(DiabetesPedigreeFunction):
+0.4810633333333334 ; 0.3370028773203906
+
+PDF(Insulin|DiabetesPedigreeFunction):
+74.25599596698164*DiabetesPedigreeFunction + 43.80649639347058 ; 116.39346715869506
+
+PDF(Outcome|DiabetesPedigreeFunction):
+0.25293864962150353*DiabetesPedigreeFunction + 0.2249871567509141 ; 0.47590848793532653
+
+PDF(Pregnancies|Outcome):
+1.4569007499756506*Outcome + 3.3149410733417746 ; 3.359206255451824
+
+PDF(BMI|Outcome):
+5.287990649654233*Outcome + 30.0721632414532 ; 8.002960174557634
+
+PDF(Age|Outcome,Pregnancies):
+2.5752723425111723*Outcome + 1.7978793193901508*Pregnancies + 25.517673254525754 ; 11.812459406161878
+
+PDF(Glucose|Outcome,Age,Insulin):
+24.871970965239356*Outcome + 0.5559404152529125*Age + 0.08107851905367643*Insulin + 86.56390679031838 ; 32.63101962346053
+
+PDF(BloodPressure|Age,BMI):
+0.3510546592030862*Age + 0.6319173107784438*BMI + 36.83762025999682 ; 19.344086018442145
+
+PDF(SkinThickness|BMI,Insulin):
+0.6182937511546478*BMI + 0.051111287498010735*Insulin + -3.23333040441036 ; 15.991245434785732
+
